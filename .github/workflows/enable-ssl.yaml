@@ -1,7 +1,7 @@
 ---
 name: Enable SSL for a domain on GoDaddy cPanel
 
-on:
+on:gguyguygyu
   workflow_dispatch:
     inputs:
       domain:
