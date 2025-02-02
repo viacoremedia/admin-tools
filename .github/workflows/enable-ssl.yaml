@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            alias acme.sh='/home/eddyv1/.acme.sh/acme.sh'
+            source /etc/profile
             # Check for acme.sh installation
             if ! command -v acme.sh &> /dev/null; then
               echo "::error::acme.sh is not installed"
