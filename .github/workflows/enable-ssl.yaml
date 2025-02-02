@@ -27,6 +27,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
+            echo ${{ secrets.SSH_HOST }}
+            echo ${{ secrets.SSH_USERNAME }}
             # Check for acme.sh installation
             if ! command -v acme.sh &> /dev/null; then
               echo "::error::acme.sh is not installed"
