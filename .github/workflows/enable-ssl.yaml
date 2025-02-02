@@ -1,5 +1,5 @@
 ---
-name: Enable SSL for a domain on GoDaddy cPanel
+name: Enable SSL for a domain on GoDaddy cPanel test
 
 on:
   workflow_dispatch:
