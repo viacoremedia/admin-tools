@@ -17,6 +17,7 @@ on:
 
 jobs:
   ssl-setup:
+    if: github.ref_name == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Configure SSL with acme.sh
