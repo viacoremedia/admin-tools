@@ -33,24 +33,27 @@ jobs:
               exit 1  
             fi
 
+             # Expand the webroot path
+            WEBROOT_PATH=$(eval echo "${{ inputs.path }}")
+          
             # Issue staging certificate
             echo "::group::Issuing staging certificate"
             acme.sh --issue \
-              --webroot "${{ inputs.path }}" \
+              --webroot "$WEBROOT_PATH" \
               -d "${{ inputs.domain }}" \
               -d "www.${{ inputs.domain }}" \
               --staging || { echo "::error::Staging certificate failed"; exit 1; }
             echo "::endgroup::"
-
+          
             # Issue production certificate
             echo "::group::Issuing production certificate"
             acme.sh --issue \
-              --webroot "${{ inputs.path }}" \
+              --webroot "$WEBROOT_PATH" \
               -d "${{ inputs.domain }}" \
               -d "www.${{ inputs.domain }}" \
               --force || { echo "::error::Production certificate failed"; exit 1; }
             echo "::endgroup::"
-
+          
             # Deploy certificate
             echo "::group::Deploying certificate"
             acme.sh --deploy \
